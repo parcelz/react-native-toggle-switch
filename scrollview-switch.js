@@ -40,7 +40,7 @@ class ToggleSwitch extends React.Component {
   setTouchableRef = (ref) => this.touchableOpacity = ref
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    toggleSwitch(nextProps.active)
+    this.toggleSwitch(nextProps.active)
     return null;
    }
 
