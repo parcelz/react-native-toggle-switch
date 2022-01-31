@@ -36,6 +36,7 @@ class ToggleSwitch extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate',prevState.isActive,this.state.isActive);
     if (prevState.isActive !== this.state.isActive) {
       this.toggleSwitch(this.state.isActive)
     }
@@ -47,6 +48,7 @@ class ToggleSwitch extends React.Component {
   setTouchableRef = (ref) => this.touchableOpacity = ref
 
   static getDerivedStateFromProps(nextProps) {
+    console.log('getDerivedStateFromProps',nextProps.active);
     return {
       isActive: nextProps.active,
     };
@@ -62,6 +64,7 @@ class ToggleSwitch extends React.Component {
 
   toggleSwitch = (state = null) => {
     const isActive = state ? state : this.state.isActive
+    console.log('toggleSwitch',isActive);
     if (isActive) {
       this.scrollRef.scrollToEnd();
       this.updateState(false);
