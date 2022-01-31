@@ -36,9 +36,19 @@ class ToggleSwitch extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate',prevProps.active,this.props.active);
+   
     if (prevProps.active !== this.props.active) {
-      this.toggleSwitch();
+      console.log('componentDidUpdate',prevProps.active,this.props.active);
+      this.setState({
+        isActive: this.props.active
+      }, () => {
+        if (this.props.active) {
+          
+          this.scrollRef.scrollTo({x: 0, y: 0, animated: true})
+        } else {
+          this.scrollRef.scrollToEnd();
+        }
+      });
     }
   }
 
